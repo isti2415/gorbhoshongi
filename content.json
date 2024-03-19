@@ -1,0 +1,34 @@
+{
+  "index": [
+    {
+      "locale": "en-US",
+      "title": "GorbhoShongi",
+      "description": "GorbhoShongi"
+    },
+    {
+      "locale": "bn-BD",
+      "title": "গর্ভসঙ্গী",
+      "description": "গর্ভসঙ্গী"
+    }
+  ],
+  "accessibility": [
+    {
+      "locale": "en-US",
+      "title": "Theme and Language Selection",
+      "dark": "Dark",
+      "light": "Light",
+      "system": "System",
+      "theme": "Theme",
+      "language": "Language"
+    },
+    {
+      "locale": "bn-BD",
+      "title": "থিম এবং ভাষা নির্বাচন",
+      "dark": "গাঢ়",
+      "light": "হালকা",
+      "system": "সিস্টেম",
+      "theme": "থিম",
+      "language": "ভাষা"
+    }
+  ]
+}
