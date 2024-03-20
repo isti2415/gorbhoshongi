@@ -38,7 +38,7 @@ export function AccessibilityToggle() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline"  size="icon" className="fixed bottom-4 left-4">
+        <Button variant="outline"  size="icon" className="fixed bottom-4 left-4" style={{zIndex:100}}>
           <Accessibility />
         </Button>
       </DialogTrigger>
