@@ -43,7 +43,7 @@ const Nav = () => {
             </DrawerTrigger>
             <DrawerContent className="h-screen w-96"></DrawerContent>
           </Drawer>
-          <span className="font-bold text-xl">GorbhoKotha</span>
+          <span className="font-bold text-xl">GorbhoShongi</span>
         </div>
         {isDesktop && (
           <NavigationMenu>
