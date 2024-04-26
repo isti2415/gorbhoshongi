@@ -1,0 +1,30 @@
+{
+  "index": {
+    "gorbhoshongi": "GorbhoShongi",
+    "loginButton": "Login",
+    "signUpButton": "Sign Up"
+  },
+  "login": {
+    "heading": "Login",
+    "subheading": "Enter your email to login to your gorbhoshongi account",
+    "emailLabel": "Email",
+    "emailPlaceholder": "m@example.com",
+    "passwordLabel": "Password",
+    "forgotPassword": "Forgot your password?",
+    "loginButton": "Login",
+    "loginWithGoogle": "Login with Google",
+    "signUpLink": "Don't have an account? Sign up"
+  },
+  "register": {
+    "heading": "Sign Up",
+    "subheading": "Create a new gorbhoshongi account",
+    "nameLabel": "Name",
+    "namePlaceholder": "John Doe",
+    "emailLabel": "Email",
+    "emailPlaceholder": "m@example.com",
+    "passwordLabel": "Password",
+    "signUpButton": "Sign Up",
+    "signUpWithGoogle": "Sign Up with Google",
+    "loginLink": "Already have an account? Login"
+  }
+}

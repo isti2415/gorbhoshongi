@@ -1,0 +1,30 @@
+{
+  "index": {
+    "gorbhoshongi": "গর্ভসঙ্গী",
+    "loginButton": "প্রবেশ করুন",
+    "signUpButton": "নিবন্ধন করুন"
+  },
+  "login": {
+    "heading": "লগইন",
+    "subheading": "আপনার ইমেইল দিয়ে গর্ভসঙ্গী অ্যাকাউন্টে লগইন করুন",
+    "emailLabel": "ইমেইল",
+    "emailPlaceholder": "m@example.com",
+    "passwordLabel": "পাসওয়ার্ড",
+    "forgotPassword": "পাসওয়ার্ড ভুলে গেছেন?",
+    "loginButton": "লগইন",
+    "loginWithGoogle": "গুগল দিয়ে লগইন করুন",
+    "signUpLink": "অ্যাকাউন্ট নেই? সাইন আপ করুন"
+  },
+  "register": {
+    "heading": "সাইন আপ",
+    "subheading": "একটি নতুন গর্ভসঙ্গী অ্যাকাউন্ট তৈরি করুন",
+    "nameLabel": "নাম",
+    "namePlaceholder": "জন ডো",
+    "emailLabel": "ইমেইল",
+    "emailPlaceholder": "m@example.com",
+    "passwordLabel": "পাসওয়ার্ড",
+    "signUpButton": "সাইন আপ",
+    "signUpWithGoogle": "গুগল দিয়ে সাইন আপ করুন",
+    "loginLink": "ইতোমধ্যে একটি অ্যাকাউন্ট আছে? লগইন করুন"
+  }
+}
