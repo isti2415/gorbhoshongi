@@ -13,7 +13,16 @@
     "forgotPassword": "পাসওয়ার্ড ভুলে গেছেন?",
     "loginButton": "লগইন",
     "loginWithGoogle": "গুগল দিয়ে লগইন করুন",
-    "signUpLink": "অ্যাকাউন্ট নেই? সাইন আপ করুন"
+    "signUpLink": "অ্যাকাউন্ট নেই? সাইন আপ করুন",
+    "emailDescription": "এখানে আপনার ইমেইল ঠিকানা লিখুন",
+    "passwordDescription": "একটি শক্তিশালী পাসওয়ার্ড লিখুন (৮ অক্ষর, অক্ষরের মিশ্রণ, সংখ্যা এবং বিশেষ চিহ্নসমূহ)",
+    "invalidEmail": "অকার্যকর ইমেইল ঠিকানা",
+    "emailRequired": "ইমেল ঠিকানা প্রয়োজন",
+    "passwordTooShort": "পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে",
+    "passwordNeedsDigit": "পাসওয়ার্ডে কমপক্ষে একটি সংখ্যা থাকতে হবে",
+    "passwordNeedsLowercase": "পাসওয়ার্ডে অন্তত একটি ছোট হাতের অক্ষর থাকতে হবে",
+    "passwordNeedsUppercase": "পাসওয়ার্ডে কমপক্ষে একটি বড় হাতের অক্ষর থাকতে হবে",
+    "passwordNeedsSpecialChar": "পাসওয়ার্ডে অন্তত একটি বিশেষ অক্ষর থাকতে হবে"
   },
   "register": {
     "heading": "সাইন আপ",

@@ -13,7 +13,16 @@
     "forgotPassword": "Forgot your password?",
     "loginButton": "Login",
     "loginWithGoogle": "Login with Google",
-    "signUpLink": "Don't have an account? Sign up"
+    "signUpLink": "Don't have an account? Sign up",
+    "emailDescription": "Enter your email address here",
+    "passwordDescription": "Enter a strong password (8+ characters, mix of letters, numbers & symbols)",
+    "invalidEmail": "Invalid email address",
+    "emailRequired": "Email address is required",
+    "passwordTooShort": "Password must be at least 8 characters",
+    "passwordNeedsDigit": "Password must contain at least one digit",
+    "passwordNeedsLowercase": "Password must contain at least one lowercase letter",
+    "passwordNeedsUppercase": "Password must contain at least one uppercase letter",
+    "passwordNeedsSpecialChar": "Password must contain at least one special character"
   },
   "register": {
     "heading": "Sign Up",

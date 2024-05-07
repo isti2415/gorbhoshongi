@@ -1,15 +1,15 @@
+import { ThemeProvider } from "@/components/theme-provider";
+import { locales } from "@/config";
+import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
+import { unstable_setRequestLocale } from "next-intl/server";
 import {
-  Noto_Sans as FontEnglish,
   Noto_Sans_Bengali as FontBengali,
+  Noto_Sans as FontEnglish,
 } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
-import { ModeToggle } from "@/components/mode-toggle";
-import { ThemeProvider } from "@/components/theme-provider";
-import { LanguageToggle } from "@/components/locale-switcher";
-import { unstable_setRequestLocale } from "next-intl/server";
-import { locales } from "@/config";
+import { Toaster } from "@/components/ui/sonner";
+import { NextIntlClientProvider, useMessages } from "next-intl";
 
 // Can be imported from a shared config
 
@@ -40,6 +40,9 @@ export default function RootLayout({
   params: { locale: string };
 }>) {
   unstable_setRequestLocale(locale);
+
+  const messages = useMessages();
+
   return (
     <html lang={locale}>
       <body
@@ -53,11 +56,10 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-          <div className="flex gap-2 fixed bottom-5 left-5">
-            <ModeToggle />
-            <LanguageToggle />
-          </div>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            {children}
+            <Toaster />
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>

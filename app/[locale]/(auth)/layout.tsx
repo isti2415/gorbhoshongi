@@ -1,6 +1,8 @@
-import React from "react";
-import Image from "next/image";
+import { LanguageToggle } from "@/components/locale-switcher";
+import { ModeToggle } from "@/components/mode-toggle";
 import { unstable_setRequestLocale } from "next-intl/server";
+import Image from "next/image";
+import React from "react";
 
 function AuthLayout({
   children,
@@ -22,6 +24,10 @@ function AuthLayout({
           height="1080"
           className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
         />
+      </div>
+      <div className="flex gap-2 fixed bottom-5 left-5">
+        <ModeToggle />
+        <LanguageToggle />
       </div>
     </div>
   );
