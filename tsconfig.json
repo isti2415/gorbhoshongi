@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/[locale]/(app)/(profile & settings)/profile", "app/[locale]/(app)/(profile & settings)/settings"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/[locale]/(app)/(profile & personalization)/profile", "app/[locale]/(app)/(profile & personalization)/personalization"],
   "exclude": ["node_modules"]
 }

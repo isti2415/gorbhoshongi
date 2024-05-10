@@ -1,8 +1,10 @@
 import createMiddleware from "next-intl/middleware";
 import { locales } from "./config";
 import { NextRequest, NextResponse } from "next/server";
+import { cookies } from "next/headers";
+import { createServerClient } from "./lib/pocketbase";
 
-const nextIntlMiddleware =  createMiddleware({
+const nextIntlMiddleware = createMiddleware({
   // A list of all locales that are supported
   locales,
 
@@ -12,8 +14,18 @@ const nextIntlMiddleware =  createMiddleware({
 });
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default function (req: NextRequest): NextResponse {
-  return nextIntlMiddleware(req)
+export default function (request: NextRequest): NextResponse {
+  const response = nextIntlMiddleware(request);
+
+  const cookieStore = cookies();
+
+  const { authStore } = createServerClient(cookieStore);
+
+  if (!authStore.isValid && request.url.startsWith("/login")) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  return response;
 }
 
 export const config = {

@@ -13,10 +13,10 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { createBrowserClient } from "@/lib/pocketbase";
 import {
   HeartPulse,
   LogOut,
-  LogOutIcon,
   Newspaper,
   PersonStanding,
   Settings,
@@ -24,11 +24,10 @@ import {
   UserCircle,
 } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { ModeToggle } from "./mode-toggle";
-import { LanguageToggle } from "./locale-switcher";
-import { Separator } from "./ui/separator";
+import { usePathname, useRouter } from "next/navigation";
+import { RecordModel } from "pocketbase";
 import { Button } from "./ui/button";
+import { Separator } from "./ui/separator";
 
 const links = [
   {
@@ -54,8 +53,21 @@ const links = [
 ];
 
 function Nav() {
-  const pathname = usePathname();
+  let pathname = usePathname();
+  pathname = pathname.slice(3);
   const isActive = (path: string) => pathname === path;
+
+  const router = useRouter();
+
+  const pb = createBrowserClient();
+
+  const user = pb.authStore.model as RecordModel;
+  const avatarUrl = pb.files.getUrl(user, user?.avatar);
+
+  const handleLogout = () => {
+    pb.authStore.clear();
+    router.push("/login");
+  };
 
   return (
     <header className="container bg-background fixed top-0 border-b h-16 grid grid-cols-2 lg:grid-cols-3 items-center justify-between z-50 w-screen">
@@ -79,14 +91,14 @@ function Nav() {
       <div className="justify-self-end">
         <Popover>
           <PopoverTrigger>
-            <AvatarComponent />
+            <AvatarComponent src={avatarUrl} name={user?.name} />
           </PopoverTrigger>
           <PopoverContent className="flex flex-col items-start justify-center gap-4">
             <div className="flex items-center justify-start gap-2">
-              <AvatarComponent />
+              <AvatarComponent src={avatarUrl} name={user?.name} />
               <div className="flex flex-col items-start justify-center">
-                <span className="text-lg">User</span>
-                <span className="text-sm">user@user@gmail.com</span>
+                <span className="text-lg">{user?.name}</span>
+                <span className="text-sm">{user?.email}</span>
               </div>
             </div>
             <Separator />
@@ -114,6 +126,7 @@ function Nav() {
             <Button
               variant={"ghost"}
               className="w-full justify-start flex items-center gap-2 hover:bg-red-900"
+              onClick={handleLogout}
             >
               <LogOut />
               Logout

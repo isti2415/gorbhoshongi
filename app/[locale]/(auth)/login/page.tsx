@@ -11,11 +11,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { pb } from "@/lib/pocketbase";
+import { createBrowserClient } from "@/lib/pocketbase";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -26,6 +26,9 @@ export default function Login({
   params: { locale: string };
 }) {
   const t = useTranslations("login");
+
+  const router = useRouter();
+  const pb = createBrowserClient();
 
   const loginSchema = z.object({
     email: z
@@ -51,17 +54,46 @@ export default function Login({
     },
   });
 
-  async function onSubmit(values: z.infer<typeof loginSchema>) {
+  const handleLogin = async (values: z.infer<typeof loginSchema>) => {
+    const email = values.email;
+    const password = values.password;
     const authData = await pb
       .collection("users")
-      .authWithPassword(values.email, values.password);
+      .authWithPassword(email, password);
 
     if (authData) {
-      redirect("/dashboard");
+      router.push("/dashboard");
     } else {
-      toast("Log in failed");
+      toast("Failed to log in");
     }
-  }
+  };
+
+  const loginWithOauth = async () => {
+    const authData = await pb
+      .collection("users")
+      .authWithOAuth2({ provider: "google" });
+    const meta = authData.meta;
+
+    if (meta?.isNew) {
+      const formData = new FormData();
+
+      const response = await fetch(meta?.avatarUrl);
+
+      if (response.ok) {
+        const file = await response.blob();
+        formData.append("avatar", file);
+      }
+
+      formData.append("name", meta?.name);
+
+      await pb.collection("users").update(authData.record.id, formData);
+      if (authData) {
+        router.push("/dashboard");
+      } else {
+        toast("Failed to log in");
+      }
+    }
+  };
 
   return (
     <div className="flex items-center justify-center py-12">
@@ -73,7 +105,7 @@ export default function Login({
           </p>
         </div>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(handleLogin)} className="space-y-4">
             <FormField
               control={form.control}
               name="email"
@@ -97,7 +129,7 @@ export default function Login({
                     <div className="flex items-center justify-between w-full">
                       <span>{t("passwordLabel")}</span>
                       <Link
-                        href={`/${locale}/forgot-password`}
+                        href={`/forgot-password`}
                         className="ml-auto inline-block text-sm underline"
                       >
                         {t("forgotPassword")}
@@ -105,7 +137,7 @@ export default function Login({
                     </div>
                   </FormLabel>
                   <FormControl>
-                    <Input {...field} />
+                    <Input type="password" {...field} />
                   </FormControl>
                   <FormDescription>{t("passwordDescription")}</FormDescription>
                   <FormMessage />
@@ -115,13 +147,13 @@ export default function Login({
             <Button type="submit" className="w-full">
               {t("loginButton")}
             </Button>
-            <Button variant="outline" className="w-full">
-              {t("loginWithGoogle")}
-            </Button>
           </form>
         </Form>
-        <div className="mt-4 text-center text-sm">
-          <Link href={`/${locale}/register`} className="underline">
+        <Button variant="outline" className="w-full" onClick={loginWithOauth}>
+          {t("loginWithGoogle")}
+        </Button>
+        <div className="mt-2 text-center text-sm">
+          <Link href={`/register`} className="underline">
             {t("signUpLink")}
           </Link>
         </div>

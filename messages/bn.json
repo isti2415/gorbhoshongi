@@ -34,6 +34,21 @@
     "passwordLabel": "পাসওয়ার্ড",
     "signUpButton": "সাইন আপ",
     "signUpWithGoogle": "গুগল দিয়ে সাইন আপ করুন",
-    "loginLink": "ইতোমধ্যে একটি অ্যাকাউন্ট আছে? লগইন করুন"
+    "loginLink": "ইতোমধ্যে একটি অ্যাকাউন্ট আছে? লগইন করুন",
+    "confirmPasswordRequired": "আপনার পাসওয়ার্ড নিশ্চিত করুন",
+    "passwordMismatch": "পাসওয়ার্ড মিলছে না",
+    "nameRequired": "আপনার নাম লিখুন",
+    "passwordConfirmDescription": "আবার আপনার পাসওয়ার্ড লিখুন",
+    "nameDescription": "আপনার পুরো নাম লিখুন",
+    "passwordConfirmLabel": "পাসওয়ার্ড নিশ্চিত করুন",
+    "emailDescription": "এখানে আপনার ইমেইল ঠিকানা লিখুন",
+    "passwordDescription": "একটি শক্তিশালী পাসওয়ার্ড লিখুন (৮ অক্ষর, অক্ষরের মিশ্রণ, সংখ্যা এবং বিশেষ চিহ্নসমূহ)",
+    "invalidEmail": "অকার্যকর ইমেইল ঠিকানা",
+    "emailRequired": "ইমেল ঠিকানা প্রয়োজন",
+    "passwordTooShort": "পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে",
+    "passwordNeedsDigit": "পাসওয়ার্ডে কমপক্ষে একটি সংখ্যা থাকতে হবে",
+    "passwordNeedsLowercase": "পাসওয়ার্ডে অন্তত একটি ছোট হাতের অক্ষর থাকতে হবে",
+    "passwordNeedsUppercase": "পাসওয়ার্ডে কমপক্ষে একটি বড় হাতের অক্ষর থাকতে হবে",
+    "passwordNeedsSpecialChar": "পাসওয়ার্ডে অন্তত একটি বিশেষ অক্ষর থাকতে হবে"
   }
 }

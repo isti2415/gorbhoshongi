@@ -34,6 +34,21 @@
     "passwordLabel": "Password",
     "signUpButton": "Sign Up",
     "signUpWithGoogle": "Sign Up with Google",
-    "loginLink": "Already have an account? Login"
+    "loginLink": "Already have an account? Login",
+    "emailDescription": "Enter your email address here",
+    "passwordDescription": "Enter a strong password (8+ characters, mix of letters, numbers & symbols)",
+    "invalidEmail": "Invalid email address",
+    "emailRequired": "Email address is required",
+    "passwordTooShort": "Password must be at least 8 characters",
+    "passwordNeedsDigit": "Password must contain at least one digit",
+    "passwordNeedsLowercase": "Password must contain at least one lowercase letter",
+    "passwordNeedsUppercase": "Password must contain at least one uppercase letter",
+    "passwordNeedsSpecialChar": "Password must contain at least one special character",
+    "confirmPasswordRequired": "Please confirm your password",
+    "passwordMismatch": "Passwords do not match",
+    "nameRequired": "Please enter your name",
+    "passwordConfirmLabel": "Confirm Password",
+    "passwordConfirmDescription": "Enter your Password Again",
+    "nameDescription": "Enter your full name"
   }
 }
