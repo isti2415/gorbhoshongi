@@ -4,5 +4,8 @@
         "H:/gorbhoshongi/dictionaries",
         "H:/gorbhoshongi/messages"
     ],
-    "i18n-ally.keystyle": "nested"
+    "i18n-ally.keystyle": "nested",
+    "CodeGPT.apiKey": "Ollama",
+    "CodeGPT.Autocomplete.enabled": true,
+    "CodeGPT.Autocomplete.provider": "Ollama - codegpt/deepseek-coder-1.3b-typescript"
 }

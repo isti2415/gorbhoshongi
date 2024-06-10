@@ -22,7 +22,8 @@
     "passwordNeedsDigit": "Password must contain at least one digit",
     "passwordNeedsLowercase": "Password must contain at least one lowercase letter",
     "passwordNeedsUppercase": "Password must contain at least one uppercase letter",
-    "passwordNeedsSpecialChar": "Password must contain at least one special character"
+    "passwordNeedsSpecialChar": "Password must contain at least one special character",
+    "loginFailed": "Failed to log in"
   },
   "register": {
     "heading": "Sign Up",
@@ -50,5 +51,15 @@
     "passwordConfirmLabel": "Confirm Password",
     "passwordConfirmDescription": "Enter your Password Again",
     "nameDescription": "Enter your full name"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "screening": "Screening",
+    "activities": "Activities",
+    "healthcare": "Healthcare",
+    "logout": "Logout",
+    "logo": "Gorbhoshongi",
+    "mood-tracking": "Mood Tracking",
+    "chatbot": "Chatbot"
   }
 }

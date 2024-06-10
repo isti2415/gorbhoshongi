@@ -13,6 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { createBrowserClient } from "@/lib/pocketbase";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -28,6 +29,7 @@ export default function Login({
   const t = useTranslations("login");
 
   const router = useRouter();
+
   const pb = createBrowserClient();
 
   const loginSchema = z.object({
@@ -54,46 +56,38 @@ export default function Login({
     },
   });
 
-  const handleLogin = async (values: z.infer<typeof loginSchema>) => {
-    const email = values.email;
-    const password = values.password;
-    const authData = await pb
-      .collection("users")
-      .authWithPassword(email, password);
-
-    if (authData) {
+  const {
+    data,
+    mutate: server_login,
+    isPending: isPendingLogin,
+  } = useMutation({
+    mutationFn: async (data: { email: string; password: string }) => {
+      const { email, password } = data;
+      return pb.collection("users").authWithPassword(email, password);
+    },
+    onSuccess: () => {
       router.push("/dashboard");
-    } else {
-      toast("Failed to log in");
-    }
-  };
+    },
+    onError: () => {
+      toast(t("loginFailed"));
+    },
+  });
 
-  const loginWithOauth = async () => {
-    const authData = await pb
-      .collection("users")
-      .authWithOAuth2({ provider: "google" });
-    const meta = authData.meta;
-
-    if (meta?.isNew) {
-      const formData = new FormData();
-
-      const response = await fetch(meta?.avatarUrl);
-
-      if (response.ok) {
-        const file = await response.blob();
-        formData.append("avatar", file);
-      }
-
-      formData.append("name", meta?.name);
-
-      await pb.collection("users").update(authData.record.id, formData);
-      if (authData) {
-        router.push("/dashboard");
-      } else {
-        toast("Failed to log in");
-      }
-    }
-  };
+  const {
+    data: OAuthData,
+    mutate: server_loginWithOAuth,
+    isPending: isPendingOAuthLogin,
+  } = useMutation({
+    mutationFn: async () => {
+      return pb.collection("users").authWithOAuth2({ provider: "google" });
+    },
+    onSuccess: () => {
+      router.push("/dashboard");
+    },
+    onError: () => {
+      toast(t("loginFailed"));
+    },
+  });
 
   return (
     <div className="flex items-center justify-center py-12">
@@ -105,7 +99,10 @@ export default function Login({
           </p>
         </div>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(handleLogin)} className="space-y-4">
+          <form
+            onSubmit={form.handleSubmit((data) => server_login(data))}
+            className="space-y-4"
+          >
             <FormField
               control={form.control}
               name="email"
@@ -149,12 +146,16 @@ export default function Login({
             </Button>
           </form>
         </Form>
-        <Button variant="outline" className="w-full" onClick={loginWithOauth}>
+        <Button
+          variant="outline"
+          className="w-full"
+          onClick={() => server_loginWithOAuth()}
+        >
           {t("loginWithGoogle")}
         </Button>
-        <div className="mt-2 text-center text-sm">
+        <div className="text-center text-sm">
           <Link href={`/register`} className="underline">
-            {t("signUpLink")}
+            <Button variant={"link"}>{t("signUpLink")}</Button>
           </Link>
         </div>
       </div>

@@ -8,9 +8,5 @@ export default function ProfileSettingsLayout({
   params: { locale: string };
 }) {
   unstable_setRequestLocale(locale);
-  return (
-    <div className="mt-2 lg:mt-4">
-      {children}
-    </div>
-  );
+  return <div>{children}</div>;
 }

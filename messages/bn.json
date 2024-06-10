@@ -22,7 +22,8 @@
     "passwordNeedsDigit": "পাসওয়ার্ডে কমপক্ষে একটি সংখ্যা থাকতে হবে",
     "passwordNeedsLowercase": "পাসওয়ার্ডে অন্তত একটি ছোট হাতের অক্ষর থাকতে হবে",
     "passwordNeedsUppercase": "পাসওয়ার্ডে কমপক্ষে একটি বড় হাতের অক্ষর থাকতে হবে",
-    "passwordNeedsSpecialChar": "পাসওয়ার্ডে অন্তত একটি বিশেষ অক্ষর থাকতে হবে"
+    "passwordNeedsSpecialChar": "পাসওয়ার্ডে অন্তত একটি বিশেষ অক্ষর থাকতে হবে",
+    "loginFailed": "লগ ইনে ব্যর্থ"
   },
   "register": {
     "heading": "সাইন আপ",
@@ -50,5 +51,15 @@
     "passwordNeedsLowercase": "পাসওয়ার্ডে অন্তত একটি ছোট হাতের অক্ষর থাকতে হবে",
     "passwordNeedsUppercase": "পাসওয়ার্ডে কমপক্ষে একটি বড় হাতের অক্ষর থাকতে হবে",
     "passwordNeedsSpecialChar": "পাসওয়ার্ডে অন্তত একটি বিশেষ অক্ষর থাকতে হবে"
+  },
+  "navigation": {
+    "logout": "প্রস্থান",
+    "healthcare": "স্বাস্থ্যসেবা",
+    "screening": "স্ক্রীনিং",
+    "dashboard": "ড্যাশবোর্ড",
+    "activities": "কার্যক্রম",
+    "logo": "গর্ভসঙ্গী",
+    "mood-tracking": "মনোভাব পর্যবেক্ষণ",
+    "chatbot": "চ্যাটবট"
   }
 }

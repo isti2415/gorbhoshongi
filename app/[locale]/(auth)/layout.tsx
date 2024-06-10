@@ -1,4 +1,5 @@
 import { LanguageToggle } from "@/components/locale-switcher";
+import Logo from "@/components/Logo";
 import { ModeToggle } from "@/components/mode-toggle";
 import { unstable_setRequestLocale } from "next-intl/server";
 import Image from "next/image";
@@ -16,14 +17,8 @@ function AuthLayout({
   return (
     <div className="w-full lg:grid min-h-screen lg:grid-cols-2">
       {children}
-      <div className="hidden bg-muted lg:block">
-        <Image
-          src="/placeholder.svg"
-          alt="Image"
-          width="1920"
-          height="1080"
-          className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
-        />
+      <div className="hidden bg-muted lg:flex items-center justify-center">
+        <Logo logoHeight={240} logoWidth={240} withText params={{ locale }} className="text-6xl gap-8"/>
       </div>
       <div className="flex gap-2 fixed bottom-5 left-5">
         <ModeToggle />

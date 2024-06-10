@@ -10,6 +10,8 @@ import {
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { NextIntlClientProvider, useMessages } from "next-intl";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import ReactQueryProvider from "@/components/ReactQueryProvider";
 
 // Can be imported from a shared config
 
@@ -44,24 +46,28 @@ export default function RootLayout({
   const messages = useMessages();
 
   return (
-    <html lang={locale}>
-      <body
-        className={cn(
-          "min-h-screen antialiased",
-          locale === "en"
-            ? fontEnglish.className
-            : locale === "bn"
-            ? fontBengali.className
-            : fontEnglish.className
-        )}
-      >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <NextIntlClientProvider locale={locale} messages={messages}>
-            {children}
-            <Toaster />
-          </NextIntlClientProvider>
-        </ThemeProvider>
-      </body>
-    </html>
+    <ReactQueryProvider>
+      <html lang={locale}>
+        <body
+          className={cn(
+            "min-h-screen antialiased",
+            locale === "en"
+              ? fontEnglish.className
+              : locale === "bn"
+              ? fontBengali.className
+              : fontEnglish.className
+          )}
+        >
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <NextIntlClientProvider locale={locale} messages={messages}>
+              <TooltipProvider>
+                {children}
+                <Toaster />
+              </TooltipProvider>
+            </NextIntlClientProvider>
+          </ThemeProvider>
+        </body>
+      </html>
+    </ReactQueryProvider>
   );
 }

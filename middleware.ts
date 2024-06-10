@@ -21,7 +21,14 @@ export default function (request: NextRequest): NextResponse {
 
   const { authStore } = createServerClient(cookieStore);
 
-  if (!authStore.isValid && request.url.startsWith("/login")) {
+  if (
+    authStore.isValid &&
+    (request.url.endsWith("/login") || request.url.endsWith("/register"))
+  ) {
+    return NextResponse.redirect(new URL("/dashboard", request.url));
+  }
+
+  if (!authStore.isValid && !request.url.endsWith("/login")) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
@@ -29,6 +36,14 @@ export default function (request: NextRequest): NextResponse {
 }
 
 export const config = {
-  // Match only internationalized pathnames
-  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+  ],
 };
