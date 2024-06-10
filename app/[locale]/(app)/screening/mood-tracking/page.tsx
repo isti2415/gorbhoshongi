@@ -25,18 +25,18 @@ function MoodTrackingPage() {
     try {
       const dailyMoodsData = await pb
         .collection("daily_mood")
-        .getFullList({ filter: `userId = "${memoizedUser.id}"` });
+        .getFullList({ filter: `userId = "${memoizedUser?.id}"` });
       setDailyMoods(dailyMoodsData);
     } catch (error) {
       console.error("Error fetching daily moods:", error);
     }
-  }, [pb, memoizedUser.id]);
+  }, [pb, memoizedUser?.id]);
 
   useEffect(() => {
     fetchDailyMoods();
 
     const unsubscribe = pb.collection("daily_mood").subscribe("*", (e) => {
-      if (e.record.user === memoizedUser.id) {
+      if (e.record.user === memoizedUser?.id) {
         switch (e.action) {
           case "create":
           case "update":
@@ -44,7 +44,7 @@ function MoodTrackingPage() {
             break;
           case "delete":
             setDailyMoods((prevDailyMoods) =>
-              prevDailyMoods.filter((mood) => mood.id !== e.record.id)
+              prevDailyMoods.filter((mood) => mood?.id !== e.record?.id)
             );
             break;
           default:
@@ -56,7 +56,7 @@ function MoodTrackingPage() {
     return () => {
       pb.collection("daily_mood").unsubscribe("*");
     };
-  }, [fetchDailyMoods, pb, memoizedUser.id]);
+  }, [fetchDailyMoods, pb, memoizedUser?.id]);
 
   console.log(dailyMoods);
 
